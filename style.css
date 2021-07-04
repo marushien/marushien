@@ -1,0 +1,17 @@
+html, body {
+  margin: 0;
+  padding: 0;
+}
+canvas {
+  display: block;
+}
+.text_container1 {
+  position: fixed;
+  top: 140px;
+  left: 60px;
+}
+.text_container2 {
+  position: fixed;
+  top: 840px;
+  left: 60px;
+}
