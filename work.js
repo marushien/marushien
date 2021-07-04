@@ -55,13 +55,24 @@ function draw() {
   fill(233);
   noStroke();
   textSize(17);
-  textAlign(LEFT);
+  textAlign(CENTER);
   textFont(h2);
   image(icon,60,50,40,40);
-  text('神木のるとされる',100,55);
-  text('作品紹介',width-450,55);
-  text('背景',width-300,55);
-  text('作品る體驗れる',width-200,55);
+  text('神木のテラリウム',160,55);
+  text('作品紹介',width-360,55);
+  text('背景',width-250,55);
+  text('作品を体験する',width-100,55);
+
+  if(mouseX < width+50 && mouseX > width-150 && mouseY < 80 && mouseY > 20){
+    fill(233,40);
+  }
+  else{
+    noFill();
+  }
+  
+  stroke(233);
+  rectMode(CENTER);
+  rect(width-100,50,150,50,20);
   
   if(gameState == 0){
     if(window_pos <= 0) translate(0,window_pos); //Scrow down
@@ -172,13 +183,13 @@ function mouseClicked(){
   }
 
   //click 作品介绍
-  if(mouseX > width-450 && mouseX < width-400 && mouseY > 20 && mouseY < 80){
+  if(mouseX > width-400 && mouseX < width-300 && mouseY > 20 && mouseY < 80){
     gameState = 0;
     window_pos = -height+100;
   }
 
   //click 作品体验
-  if(mouseX > width-200 && mouseX < width-100 && mouseY > 20 && mouseY < 80){
+  if(mouseX < width+50 && mouseX > width-150 && mouseY < 80 && mouseY > 20){
     gameState = 1;
   }
 
