@@ -24,6 +24,9 @@ let new_mouseY;
 
 let tree1,tree2;
 
+let brokerState = false;
+let clickedState = false;
+
 function preload() {
  h1 = loadFont('assets/ShipporiMincho-Bold.ttf');
  h2 = loadFont('assets/ShipporiMincho-Medium.ttf');
@@ -57,6 +60,11 @@ function setup() {
 
 function draw() {
   //console.log(mouseX + ' ' + mouseY);
+  if(brokerState && clickState){
+    clickState = false;
+    brokerState = false;
+    sendMqttMessage('on');
+  }
   new_mouseY = mouseY - window_pos;
   background(255); //Background
   
@@ -153,6 +161,7 @@ function gotStream(stream, id) {
   serverVideo.hide();
 }
 function onConnect() {
+  brokerState = true;
   console.log(broker.hostname + "is connected");
 }
 
@@ -226,7 +235,8 @@ function mousePressed(){
 function mouseReleased(){
   if(b2_state == 1){
     b2_state = 0;
-    sendMqttMessage('on');
+    //sendMqttMessage('on');
+    clickState = true;
   }
 }
 
