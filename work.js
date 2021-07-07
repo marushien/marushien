@@ -1,8 +1,8 @@
 let serverVideo;
 let state = "on";
 let broker = {
-  hostname: 'broker.hivemq.com',
-  port: 8000
+  hostname: 'test.mosquitto.org',
+  port: 8080
 };
 let client;
 let topic = 'drop';
