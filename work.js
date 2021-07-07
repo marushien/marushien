@@ -41,8 +41,7 @@ function setup() {
   createCanvas(innerWidth, innerHeight);
   textAlign(CENTER);
   imageMode(CENTER);
-  
-  console.log("connecting " + bro);
+
   //Live stream
   let p5l = new p5LiveMedia(this, "CAPTURE", serverVideo, "jZQ64AMJc_TESTTEST");
   p5l.on('stream', gotStream);
@@ -144,10 +143,6 @@ function draw() {
   }
   pop();
   drawUp();
-}
-
-function mousePressed() {
-  sendMqttMessage(state);
 }
 
 function gotStream(stream, id) {
