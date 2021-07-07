@@ -1,6 +1,6 @@
 let serverVideo;
 let state = "on";
-let bro = 'test.mosquitto.org'
+let bro = 'broker.hivemq.com'
 let broker = {
   hostname: bro,
   port: 1883
