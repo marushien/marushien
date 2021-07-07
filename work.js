@@ -65,10 +65,12 @@ function draw() {
     brokerState = false;
     sendMqttMessage('on');
   }else if(!brokerState && clickState){
-    while(brokerState){
-      clickState = false;
-      brokerState = false;
-      sendMqttMessage('on');
+    while(clickState){
+      if(brokerState){
+        clickState = false;
+        brokerState = false;
+        sendMqttMessage('on');
+      }
     }
   }
   new_mouseY = mouseY - window_pos;
