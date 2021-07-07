@@ -1,6 +1,6 @@
 let serverVideo;
 let state = "on";
-let bro = 'test.mosquitto.org'
+let bro = 'iot.eclipse.org'
 let broker = {
   hostname: bro,
   port: 8883
