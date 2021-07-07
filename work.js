@@ -1,8 +1,9 @@
 let serverVideo;
 let state = "on";
+let bro = 'iot.eclipse.org'
 let broker = {
-  hostname: 'broker.hivemq.com',
-  port: 8000
+  hostname: bro,
+  port: 443
 };
 let client;
 let topic = 'drop';
