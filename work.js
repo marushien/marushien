@@ -51,7 +51,7 @@ function setup() {
   //MQTT 
   client = new Paho.MQTT.Client(broker.hostname, broker.port, "p5_Client");
   client.onConnectionLost = onConnectionLost;
-  client.connect({onSuccess: onConnect, useSSL: true});
+  client.connect({onSuccess: onConnect,});
 }
 
 function draw() {
