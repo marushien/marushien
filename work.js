@@ -64,6 +64,12 @@ function draw() {
     clickState = false;
     brokerState = false;
     sendMqttMessage('on');
+  }else if(!brokerState && clickState){
+    while(brokerState){
+      clickState = false;
+      brokerState = false;
+      sendMqttMessage('on');
+    }
   }
   new_mouseY = mouseY - window_pos;
   background(255); //Background
@@ -170,6 +176,7 @@ function onConnectionLost(response) {
       console.log('onConnectionLost:' + response.errorMessage);
   }
   client.connect({onSuccess: onConnect,});
+  brokerState = false;
 }
 
 function sendMqttMessage(msg) {
