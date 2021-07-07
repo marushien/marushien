@@ -153,7 +153,7 @@ function gotStream(stream, id) {
   serverVideo.hide();
 }
 function onConnect() {
-  console.log("new client is connected");
+  console.log(broker.hostname + "is connected");
 }
 
 function onConnectionLost(response) {
