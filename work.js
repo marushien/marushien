@@ -25,7 +25,7 @@ let new_mouseY;
 let tree1,tree2;
 
 let brokerState = false;
-let clickedState = false;
+let clickState = false;
 
 function preload() {
  h1 = loadFont('assets/ShipporiMincho-Bold.ttf');
