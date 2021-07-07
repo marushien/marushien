@@ -1,8 +1,7 @@
 let serverVideo;
 let state = "on";
-let bro = 'broker.hivemq.com'
 let broker = {
-  hostname: bro,
+  hostname: 'broker.hivemq.com',
   port: 8000
 };
 let client;
