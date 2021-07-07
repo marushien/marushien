@@ -42,7 +42,8 @@ function setup() {
   createCanvas(innerWidth, innerHeight);
   textAlign(CENTER);
   imageMode(CENTER);
-
+  
+  console.log("connecting " + bro);
   //Live stream
   let p5l = new p5LiveMedia(this, "CAPTURE", serverVideo, "jZQ64AMJc_TESTTEST");
   p5l.on('stream', gotStream);
