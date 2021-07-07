@@ -60,12 +60,7 @@ function setup() {
 
 function draw() {
   //console.log(mouseX + ' ' + mouseY);
-  if(brokerState && clickState){
-    clickState = false;
-    brokerState = false;
-    sendMqttMessage('on');
-  }
-  
+ 
   new_mouseY = mouseY - window_pos;
   background(255); //Background
   
@@ -242,7 +237,7 @@ function mousePressed(){
 function mouseReleased(){
   if(b2_state == 1){
     b2_state = 0;
-    //sendMqttMessage('on');
+    sendMqttMessage('on');
     clickState = true;
   }
 }
