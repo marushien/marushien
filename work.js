@@ -64,15 +64,8 @@ function draw() {
     clickState = false;
     brokerState = false;
     sendMqttMessage('on');
-  }else if(!brokerState && clickState){
-    while(clickState){
-      if(brokerState){
-        clickState = false;
-        brokerState = false;
-        sendMqttMessage('on');
-      }
-    }
   }
+  
   new_mouseY = mouseY - window_pos;
   background(255); //Background
   
@@ -171,6 +164,11 @@ function gotStream(stream, id) {
 function onConnect() {
   brokerState = true;
   console.log(broker.hostname + "is connected");
+  if(clickState){
+    clickState = false;
+    brokerState = false;
+    sendMqttMessage('on');
+  }
 }
 
 function onConnectionLost(response) {
