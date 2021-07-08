@@ -137,7 +137,7 @@ function draw() {
       textSize(16);
       fill(0);
       textAlign(CENTER);
-      text("loading steaming . . .",width/2,height/2-70);
+      text("loading for live stream . . .",width/2,height/2-70);
     }
     textSize(14);
     fill(0);
