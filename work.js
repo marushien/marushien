@@ -27,6 +27,8 @@ let tree1,tree2;
 let brokerState = false;
 let clickState = false;
 
+let delayImage;
+
 function preload() {
  h1 = loadFont('assets/ShipporiMincho-Bold.ttf');
  h2 = loadFont('assets/ShipporiMincho-Medium.ttf');
@@ -56,6 +58,11 @@ function setup() {
     {
         onSuccess: onConnect, 
     });
+
+    link = createA("https://iiiex-0punk.web.app/#/1","東京大学制作展 Extraに戻る", "_self");
+    link.position(width-250, height-40); 
+    link.style('color', 'gray'); 
+    link.style('font-size', '14px'); 
 }
 
 function draw() {
@@ -67,10 +74,10 @@ function draw() {
   push();
   if(gameState == 0){
     if(window_pos <= 0) {
-      if(window_pos >= -2300){
+      if(window_pos >= -2600){
         translate(0,window_pos); //Scrow down
       }else{
-        translate(0,-2300); //Scrow down
+        translate(0,-2600); //Scrow down
       }
      
     }
@@ -93,17 +100,6 @@ function draw() {
     noStroke();
     text("神が宿るとされる「神木」は、地域の御守りのような存在であり、参拝者と自然、神道文化を繋げる「結び」の役割も果たしている。\n\nそうした神木の中には、台風などの自然災害の被害を受けているもの多い。\n\n本作品では、壊れた神木も引き続き地域を見守り、結びの役割を続けられるように、神木を再生する新しい手法を考えた。\n\nウェブサイトの訪問者数に応じて、神木の状態が変化する。\n\nこれは住民が集まることで神木が再生することを表しており、新しい時代の巡礼の形になり得るだろう。",width/2-380,height+180);
     
-    /*
-    let show_b1;
-    let b1_x = width/2;
-    let b1_y = height+850;
-    
-    if(mouseX > b1_x-100 && mouseX < b1_x+100 && new_mouseY > b1_y-50 && new_mouseY < b1_y+50){
-      show_b1 = b1_on;
-    }else show_b1 = b1_off;
-    image(show_b1,b1_x,b1_y,200,200*b1_off.height/b1_off.width);
-    */
-    
     //背景
     textAlign(CENTER);
     textSize(26);
@@ -123,16 +119,20 @@ function draw() {
     image(tree2,width/2, s_y+100+width*0.25,0.7*width,tree2.height/tree2.width *0.7* width);
 
     text("いつまでも変わらず存在し続けそうな大杉が倒れ、町民たちは「自然」という大きな存在を改めて気づきました。\n\n気持ちを整理し、町民たちは、大杉との思い出から学んできたものを受け継いでいくと決めました。\n\n復興と未来に向かって、公的機関や町民の方々が積極的に対応策を協議し、スタートとして、去年にクラウドファンディングを実施しました。",0.15*width, s_y+100+width*0.40);
+    text("協力：\n\n「大湫町 御神木・大杉応援サイト」\n\n「樹齢1300年の大杉被災復興プロジェクト」\n\nhttps://peraichi.com/landing_pages/view/shinmeiosugi",0.15*width, s_y+250+width*0.40);
   
-    
-
   }else if(gameState == 1){
     noFill();
     stroke(200);
     rectMode(CENTER);
     rect(width/2,height/2-70,0.8*640,0.8*480);
     if (serverVideo != null) {
-      image(serverVideo,width/2,height/2-70,0.8*640,0.8*480);
+      if(red(serverVideo.get(50, 90)) != 0){
+        image(serverVideo,width/2,height/2-70,0.8*640,0.8*480);
+        delayImage = serverVideo;
+      }else if(delayImage != null && red(serverVideo.get(50, 90)) == 0){
+        image(delayImage,width/2,height/2-70,0.8*640,0.8*480);
+      }
     }else{
       textSize(16);
       fill(0);
@@ -184,12 +184,12 @@ function sendMqttMessage(msg) {
 }
 
 function mouseWheel(event) {
-  if(window_pos <= 0 && window_pos >= -2300){
+  if(window_pos <= 0 && window_pos >= -2600){
     window_pos -= event.delta;
   }else if(window_pos > 0){
     window_pos = 0;
-  }else if(window_pos < -2300){
-    window_pos = -2300;
+  }else if(window_pos < -2600){
+    window_pos = -2600;
   }
 }
 
