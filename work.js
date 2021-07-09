@@ -138,6 +138,9 @@ function draw() {
       fill(0);
       textAlign(CENTER);
       text("loading for live stream . . .",width/2,height/2-100);
+      if(delayImage != null){
+        image(delayImage,width/2,height/2-100,0.8*640,0.8*480);
+      }
     }
     textSize(14);
     fill(0);
