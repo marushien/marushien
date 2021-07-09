@@ -125,28 +125,30 @@ function draw() {
     noFill();
     stroke(200);
     rectMode(CENTER);
-    rect(width/2,height/2-70,0.8*640,0.8*480);
+    rect(width/2,height/2-100,0.8*640,0.8*480);
     if (serverVideo != null) {
       if(red(serverVideo.get(50, 90)) != 0){
-        image(serverVideo,width/2,height/2-70,0.8*640,0.8*480);
+        image(serverVideo,width/2,height/2-100,0.8*640,0.8*480);
         delayImage = serverVideo;
       }else if(delayImage != null && red(serverVideo.get(50, 90)) == 0){
-        image(delayImage,width/2,height/2-70,0.8*640,0.8*480);
+        image(delayImage,width/2,height/2-100,0.8*640,0.8*480);
       }
     }else{
       textSize(16);
       fill(0);
       textAlign(CENTER);
-      text("loading for live stream . . .",width/2,height/2-70);
+      text("loading for live stream . . .",width/2,height/2-100);
     }
     textSize(14);
     fill(0);
     noStroke();
     textAlign(LEFT);
     textFont(h2);
-    text("上の生配信の映像に映っているのは、本作品の主体となる「テラリウム」であり、中に立っているのは枯木です。\n参拝・祈祷する際、拍手に神様への敬意を乗せるように、このページの下にあるボタンをクリックすると、\nあなたの思いがテラリウムに送信されます。そして、その思いが水になり、テラリウムにある木に滴り、一定量溜まると、\n枯木が生き返ったように、葉っぱのような結晶が咲きます。",width/2-350,height/2+170);
-    if(b2_state == 0) image(b2_off,width/2,height-60,100,100);
-    else if(b2_state == 1) image(b2_on,width/2,height-60,100,100);
+    text("上の生配信の映像に映っているのは、本作品の主体となる「テラリウム」であり、中に立っているのは枯木です。\n参拝・祈祷する際、拍手に神様への敬意を乗せるように、このページの下にあるボタンをクリックすると、\nあなたの思いがテラリウムに送信されます。そして、その思いが水になり、テラリウムにある木に滴り、一定量溜まると、\n枯木が生き返ったように、葉っぱのような結晶が咲きます。",width/2-350,height/2+120);
+    textSize(10);
+    text("U-Tokyo等々一部のLAN（ローカル・エリア・ネットワーク）ではライブ配信が見えない場合がございます。その際、ネットワークの切り替えお願い申し上げます。\nPlease note that for some LANs (Local Area Networks), such as U-Tokyo, the live stream may not be available. If this happens, please switch your network.",width/2-350,height/2+220);
+    if(b2_state == 0) image(b2_off,width/2,height-50,80,80);
+    else if(b2_state == 1) image(b2_on,width/2,height-50,80,80);
   }
   pop();
   drawUp();
