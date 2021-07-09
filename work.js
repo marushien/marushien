@@ -29,6 +29,8 @@ let clickState = false;
 
 let delayImage;
 
+let down = -3200;
+
 function preload() {
  h1 = loadFont('assets/ShipporiMincho-Bold.ttf');
  h2 = loadFont('assets/ShipporiMincho-Medium.ttf');
@@ -74,10 +76,10 @@ function draw() {
   push();
   if(gameState == 0){
     if(window_pos <= 0) {
-      if(window_pos >= -2600){
+      if(window_pos >= down){
         translate(0,window_pos); //Scrow down
       }else{
-        translate(0,-2600); //Scrow down
+        translate(0,down); //Scrow down
       }
      
     }
@@ -132,13 +134,14 @@ function draw() {
     noFill();
     stroke(200);
     rectMode(CENTER);
-    rect(width/2,height/2-100,0.8*640,0.8*480);
+    let scaleRate = 1;
+    rect(width/2,height/2-100,scaleRate*640,scaleRate*480);
     if (serverVideo != null) {
       if(red(serverVideo.get(50, 90)) != 0){
-        image(serverVideo,width/2,height/2-100,0.8*640,0.8*480);
+        image(serverVideo,width/2,height/2-100,scaleRate*640,scaleRate*480);
         delayImage = serverVideo;
       }else if(delayImage != null && red(serverVideo.get(50, 90)) == 0){
-        image(delayImage,width/2,height/2-100,0.8*640,0.8*480);
+        image(delayImage,width/2,height/2-100,scaleRate*640,scaleRate*480);
       }
     }else{
       textSize(16);
@@ -146,14 +149,18 @@ function draw() {
       textAlign(CENTER);
       text("loading for live stream . . .",width/2,height/2-100);
     }
-    textSize(14);
+    textSize(12);
     fill(0);
     noStroke();
     textAlign(LEFT);
     textFont(h2);
-    text("上の生配信の映像に映っているのは、本作品の主体となる「テラリウム」であり、中に立っているのは枯木です。\n参拝・祈祷する際、拍手に神様への敬意を乗せるように、このページの下にあるボタンをクリックすると、\nあなたの思いがテラリウムに送信されます。そして、その思いが水になり、テラリウムにある木に滴り、一定量溜まると、\n枯木が生き返ったように、葉っぱのような結晶が咲きます。",width/2-350,height/2+120);
+    text("上の生配信の映像に映っているのは、本作品の主体となる「テラリウム」であり、中に立っているのは枯木です。\n参拝・祈祷する際、拍手に神様への敬意を乗せるように、このページの下にあるボタンをクリックすると、\nあなたの思いがテラリウムに送信されます。そして、その思いが水になり、テラリウムにある木に滴り、一定量溜まると、\n枯木が生き返ったように、葉っぱのような結晶が咲きます。",width/2-325,height/2+160);
     textSize(10);
-    text("U-Tokyo等々一部のLAN（ローカル・エリア・ネットワーク）ではライブ配信が見えない場合がございます。その際、ネットワークの切り替えお願い申し上げます。\nPlease note that for some LANs (Local Area Networks), such as U-Tokyo, the live stream may not be available. If this happens, please switch your network.",width/2-350,height/2+220);
+    text("U-Tokyo等々一部のLAN（ローカル・エリア・ネットワーク）ではライブ配信が見えない場合がございます。その際、ネットワークの切り替えお願い申し上げます。\nPlease note that for some LANs (Local Area Networks), such as U-Tokyo, the live stream may not be available. If this happens, please switch your network.",width/2-325,height/2+240);
+    text("1回だけクリックして、次のクリックまでに3秒空けてください。(短時間に何度もクリックすると、神木の結晶をダメージする懸念がございますのでご注意ください)\nPlease click only once and give it three seconds before the next click.(Please note that clicking multiple times in a short period of time will cause damage to the shinboku.)",width/2-325,height/2+280);
+    
+    
+    
     if(b2_state == 0) image(b2_off,width/2,height-50,80,80);
     else if(b2_state == 1) image(b2_on,width/2,height-50,80,80);
   }
@@ -193,12 +200,12 @@ function sendMqttMessage(msg) {
 }
 
 function mouseWheel(event) {
-  if(window_pos <= 0 && window_pos >= -2600){
+  if(window_pos <= 0 && window_pos >= down){
     window_pos -= event.delta;
   }else if(window_pos > 0){
     window_pos = 0;
-  }else if(window_pos < -2600){
-    window_pos = -2600;
+  }else if(window_pos < down){
+    window_pos = down;
   }
 }
 
