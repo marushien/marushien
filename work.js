@@ -74,10 +74,10 @@ function draw() {
   push();
   if(gameState == 0){
     if(window_pos <= 0) {
-      if(window_pos >= -2600){
+      if(window_pos >= -3000){
         translate(0,window_pos); //Scrow down
       }else{
-        translate(0,-2600); //Scrow down
+        translate(0,-3000); //Scrow down
       }
      
     }
@@ -138,9 +138,6 @@ function draw() {
       fill(0);
       textAlign(CENTER);
       text("loading for live stream . . .",width/2,height/2-100);
-      if(delayImage != null){
-        image(delayImage,width/2,height/2-100,0.8*640,0.8*480);
-      }
     }
     textSize(14);
     fill(0);
@@ -189,12 +186,12 @@ function sendMqttMessage(msg) {
 }
 
 function mouseWheel(event) {
-  if(window_pos <= 0 && window_pos >= -2600){
+  if(window_pos <= 0 && window_pos >= -3000){
     window_pos -= event.delta;
   }else if(window_pos > 0){
     window_pos = 0;
-  }else if(window_pos < -2600){
-    window_pos = -2600;
+  }else if(window_pos < -3000){
+    window_pos = -3000;
   }
 }
 
