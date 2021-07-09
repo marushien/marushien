@@ -132,6 +132,8 @@ function draw() {
         delayImage = serverVideo;
       }else if(delayImage != null && red(serverVideo.get(50, 90)) == 0){
         image(delayImage,width/2,height/2-100,0.8*640,0.8*480);
+      }else{
+        image(delayImage,width/2,height/2-100,0.8*640,0.8*480);
       }
     }else{
       textSize(16);
