@@ -74,10 +74,10 @@ function draw() {
   push();
   if(gameState == 0){
     if(window_pos <= 0) {
-      if(window_pos >= -3000){
+      if(window_pos >= -2600){
         translate(0,window_pos); //Scrow down
       }else{
-        translate(0,-3000); //Scrow down
+        translate(0,-2600); //Scrow down
       }
      
     }
@@ -114,12 +114,19 @@ function draw() {
     text("「豪雨により樹齢1300年の御神木が倒れてしまった」",0.15*width, s_y);
     textFont(h2);
     textSize(14);
-    text("2020年7月11日22時30分頃、豪雨の影響により、町民にとって心の拠り所だった、\n\n岐阜県瑞浪市大湫町神明神社にある推定樹齢1300年の大杉が根元から倒れました。\n\nこの大杉の推定樹齢は1300年で、幹周が11m、樹高が約60mでした。",0.15*width, s_y+width*0.04);
+    text("2020年7月11日22時30分頃、豪雨の影響により、町民にとって心の拠り所だった、岐阜県瑞浪市大湫町神明神社にある推定樹齢1300年の大杉が根元から倒れた。\n\nこの大杉の推定樹齢は1300年で、幹周が11m、樹高が約60mだった。\n\nいつまでも変わらず存在し続けそうな大杉が倒れ、町民たちは「自然」という大きな存在を改めて気づくる。\n\n気持ちを整理し、町民たちは、大杉との思い出から学んできたものを受け継いでいくと決めた。\n\n復興と未来に向かって、公的機関や町民の方々が積極的に対応策を協議し、スタートとして、去年にクラウドファンディングを実施した。",0.15*width, s_y+width*0.04);
     
     image(tree2,width/2, s_y+100+width*0.25,0.7*width,tree2.height/tree2.width *0.7* width);
-
-    text("いつまでも変わらず存在し続けそうな大杉が倒れ、町民たちは「自然」という大きな存在を改めて気づきました。\n\n気持ちを整理し、町民たちは、大杉との思い出から学んできたものを受け継いでいくと決めました。\n\n復興と未来に向かって、公的機関や町民の方々が積極的に対応策を協議し、スタートとして、去年にクラウドファンディングを実施しました。",0.15*width, s_y+100+width*0.40);
-    text("協力：\n\n「大湫町 御神木・大杉応援サイト」\n\n「樹齢1300年の大杉被災復興プロジェクト」\n\nhttps://peraichi.com/landing_pages/view/shinmeiosugi",0.15*width, s_y+250+width*0.40);
+    
+    textFont(h1);
+    textSize(16);
+    text("「推定樹齢 1300 年の大杉を後世へ繋ぎたい」",0.15*width, s_y+100+width*0.40);
+    textFont(h2);
+    textSize(14);
+    text("という心境を聞き、大杉と大湫町の「結び」に大変感銘を受け、出来るだけ多くの人に大湫町の御神木を知ってもらいたい気持ちを込め、\n\n我々は自然災害による被害を受けた神木を応援し始めた。",0.15*width, s_y+150+width*0.40);
+    text("この度、神明大杉の写真を提供し、ご協力いただいた\n\n大湫大杉を応援する若手有志の会や大湫町神明神社の関係者\n\nの皆様に心より感謝申し上げます。",0.15*width, s_y+250+width*0.40);
+    
+    text("写真出典：\n\nhttps://peraichi.com/landing_pages/view/shinmeiosugi\n\n事前に著作者の許諾を取得しております。",0.15*width, s_y+400+width*0.40);
   
   }else if(gameState == 1){
     noFill();
@@ -186,23 +193,16 @@ function sendMqttMessage(msg) {
 }
 
 function mouseWheel(event) {
-  if(window_pos <= 0 && window_pos >= -3000){
+  if(window_pos <= 0 && window_pos >= -2600){
     window_pos -= event.delta;
   }else if(window_pos > 0){
     window_pos = 0;
-  }else if(window_pos < -3000){
-    window_pos = -3000;
+  }else if(window_pos < -2600){
+    window_pos = -2600;
   }
 }
 
 function mouseClicked(){
-  // if(gameState == 0){
-  //   let b1_x = width/2;
-  //   let b1_y = height+450;
-  //   if(mouseX > b1_x-100 && mouseX < b1_x+100 && new_mouseY > b1_y-50 && new_mouseY < b1_y+50)
-  //     gameState = 1;
-  // }
-  //click icon
   if(mouseX > 42 && mouseX < 233 && mouseY > 0 && mouseY < 80){
     gameState = 0;
     window_pos = 0;
